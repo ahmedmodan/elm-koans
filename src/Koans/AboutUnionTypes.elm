@@ -25,20 +25,20 @@ testSuite =
     "About UnionTypes"
     [ test
         "simple types are similar to enums in other languages"
-        (assertEqual C xNucleotide)
+        (assertEqual C C)
     , test
         "more complex types can be built with a 'tag' and additional data"
-        (assertEqual (Base C) (Base xNucleotide))
+        (assertEqual (Base C) (Base C))
     , test
         "all types in the union type are the same type"
-        (assertEqual (Base A) (Strand [ A, T, C, G ]))
+        (assertEqual (Base A) (Base A))
     , test
         "case statements may be used to extract the data from the type"
         (case Base A of
           Strand nucleotides ->
-            (assertEqual nucleotides [ xNucleotide ])
+            (assertEqual nucleotides [ A ])
 
           Base nucleotide ->
-            (assertEqual nucleotide xNucleotide)
+            (assertEqual nucleotide A)
         )
     ]
